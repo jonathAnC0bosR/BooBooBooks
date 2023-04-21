@@ -1,0 +1,89 @@
+body {
+	background-color: #f2f2f2;
+	font-family: Arial, sans-serif;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+	margin: 50px 0;
+}
+
+.form {
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.form label {
+	display: block;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.form input[type=text] {
+	padding: 10px;
+	border: none;
+	background-color: #f2f2f2;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.form button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.results {
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.results h2 {
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.google-books,
+.internet-archive {
+	margin-bottom: 20px;
+}
+
+.book {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.book img {
+	max-width: 100px;
+	margin-right: 20px;
+}
+
+.book h3 {
+	margin-top: 0;
+}
+
+.book p {
+	margin: 0;
+}
+
+.book .button {
+	background-color: #333;
+	color: #fff;
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	margin-top: 10px;
+}
