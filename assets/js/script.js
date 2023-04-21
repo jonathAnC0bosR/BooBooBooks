@@ -1,7 +1,19 @@
-$(document).ready(function() {
-    $('#search').on('click', function() {
-        var topic = $('#topic').val();
-        var keywords = $('#keywords').val();
-        var googleBooksUrl = 'https://www.googleapis.com/books/v1/volumes?q=' + topic + '+' + keywords;
-        var internetArchiveUrl = 'https://archive.org/advancedsearch.php?q=' + topic + '+' + keywords + '&fl[]=identifier,downloads,title&rows=5&output=json';
-        $('.google-books'). }}
+// DOM ELEMENTS
+
+var topicInputEl = document.querySelector('#topic');
+var kewordInputEl = document.querySelector('#keyword');
+var searchBtn = document.querySelector('#search');
+
+// GLOBAL VAR 
+
+var googleApiKey = 'AIzaSyBnclLTbT1mhObu7gIM7GD2zyWPGJMmCdA';
+
+addEventListener('click', function() {
+    var googleUrl = 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=' + googleApiKey;
+    fetch(googleUrl)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+
+})
