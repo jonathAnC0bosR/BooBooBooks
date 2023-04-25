@@ -1,11 +1,12 @@
+// DOM ELEMENTS
 
-
-// A FUNCTION THAT LETS THE USER CHANGE THE TOPIC
 let submitBtn = document.getElementById('search');
 
 let subject;
+let author;
 function selectTopic(){
     subject = document.getElementById('topic').value;
+    author = document.getElementById('author').value;
     if(!subject){
         return
     }
@@ -13,7 +14,7 @@ function selectTopic(){
 }
 
 function searchBook(){
-    var requestUrl = 'https://openlibrary.org/subjects/'+subject+ '.json';
+    var requestUrl = 'https://openlibrary.org/search.json?author='+author+'&subject:='+subject;
 fetch(requestUrl)
     .then(function(response){
         return response.json();
@@ -21,32 +22,42 @@ fetch(requestUrl)
     .then(function(data){
         console.log('Data From Open Library');
         console.log(data)
+        createCards(data)
+         
+    });
+}
 
-        let count = 0;
-        for(let i = 0; i<data.works.length; i++){
-                if(data.works[i].availability.is_lendable == true && data.works[i].has_fulltext == true){
-                    console.log(data.works[i])
-                    console.log('https://openlibrary.org' + data.works[i].key);
+   //CREATE A CARD ELEMENT THAT IS A LINK FOR NOW A DIV, CREATE TITLE, CREATE TUMBNAIL
+function createCards(data){
+    let count = 0;
+        for(let i = 0; i<data.docs.length; i++){
+                if(data.docs[i].ebook_access == "borrowable" && data.docs[i].has_fulltext == true){
+                    console.log('https://openlibrary.org/'+data.docs[i].key);
+                    let cardHolder = document.querySelector('.internet-archive');
+                    let bookCardEl = document.createElement('div');
+                    let bookTitleEl = document.createElement('h2');
+                    let bookTitle = data.docs[i].title;
+                    bookTitleEl.textContent = bookTitle;
+                    let imageLink = 'https://covers.openlibrary.org/b/id/'+data.docs[i].cover_i+'-S.jpg';
+                    let imageEl = document.createElement('img');
+
+                    cardHolder.appendChild(bookCardEl);
+                    bookCardEl.appendChild(bookTitleEl);
+
+                    if (imageLink) {
+                        imageEl.setAttribute('src', imageLink);
+                        bookCardEl.appendChild(imageEl); 
+                    }else{
+                        imageEl.setAttribute('src', './assets/images/No_Image_Available.jpg');
+                        bookCardEl.appendChild(imageEl); 
+                    }
+
                     count++;
                     if(count == 5){
                         break;
                     }
                 }
-            } 
-    });
-}
-
-//TODO: ADD A FUNCTION THAT CREATES ELEMENTS IN THE DOM AND APPENDS THEM TO THE HTML FILE
-function createCards(){
-    /*TODO: 
-    OBTENER EL TITULO: DENTRO DE LA DATA
-    OBTENER EL LINK: YA ESTÁ, LINEA 16
-    OBTENER LA PORTADA :
-        https://covers.openlibrary.org/b/id/240727-S.jpg
-        https://openlibrary.org/dev/docs/api/covers
-    OBTENER AUTOR; DENTRO DE LA DATA
-
-    */
+            }
 }
 
 submitBtn.addEventListener('click',selectTopic);
