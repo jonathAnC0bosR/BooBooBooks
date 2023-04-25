@@ -1,13 +1,19 @@
-/* 
-THE BOOKS DISPLAYED NEED TO HAVE
-ebook_access: "borrowable" || true
-has_fulltext: true
-*/
 
-// This URL needs to be able to be changed by the user
-autor = 'tolkien';
-var requestUrl = 'https://openlibrary.org/search.json?author='+autor;
 
+// A FUNCTION THAT LETS THE USER CHANGE THE TOPIC
+let submitBtn = document.getElementById('search');
+
+let subject;
+function selectTopic(){
+    subject = document.getElementById('topic').value;
+    if(!subject){
+        return
+    }
+    searchBook();
+}
+
+function searchBook(){
+    var requestUrl = 'https://openlibrary.org/subjects/'+subject+ '.json';
 fetch(requestUrl)
     .then(function(response){
         return response.json();
@@ -15,17 +21,34 @@ fetch(requestUrl)
     .then(function(data){
         console.log('Data From Open Library');
         console.log(data)
-        //This logs the first five results which are available to be borrowed and that have the full text
-        //PROBLEM: SOLO LOGEA LOS PRIMEROS 5 ITEMS DEL ARRAY E LUGAR DE SEGUIR EVALUANDO HASTA REGRESAR 5 RESULTADOS
-        //PROBLEM: ebook_access puede tener dos valores: borrowable y true
-        
 
-            for(let i = 0; i < data.docs.length; i++){
-                let singleBook = data.docs[i];
-    
-                if(singleBook.ebook_access == "borrowable" && singleBook.has_fulltext == true){
-                console.log(singleBook)
-                console.log('https://openlibrary.org' + singleBook.key);
+        let count = 0;
+        for(let i = 0; i<data.works.length; i++){
+                if(data.works[i].availability.is_lendable == true && data.works[i].has_fulltext == true){
+                    console.log(data.works[i])
+                    console.log('https://openlibrary.org' + data.works[i].key);
+                    count++;
+                    if(count == 5){
+                        break;
+                    }
                 }
             } 
     });
+}
+
+//TODO: ADD A FUNCTION THAT CREATES ELEMENTS IN THE DOM AND APPENDS THEM TO THE HTML FILE
+function createCards(){
+    /*TODO: 
+    OBTENER EL TITULO: DENTRO DE LA DATA
+    OBTENER EL LINK: YA ESTÁ, LINEA 16
+    OBTENER LA PORTADA :
+        https://covers.openlibrary.org/b/id/240727-S.jpg
+        https://openlibrary.org/dev/docs/api/covers
+    OBTENER AUTOR; DENTRO DE LA DATA
+
+    */
+}
+
+submitBtn.addEventListener('click',selectTopic);
+
+
