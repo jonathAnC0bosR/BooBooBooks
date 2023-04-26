@@ -4,6 +4,7 @@ var topicInputEl = document.querySelector('#topic');
 var authorInputEl = document.querySelector('#author');
 var searchBtn = document.querySelector('#search');
 var booksCards = document.querySelector('.book-cards');
+var enterDataEl = document.querySelector('#enter-data');
 
 
 // GLOBAL VAR 
@@ -18,7 +19,8 @@ var handleFormSubmit = function(event) {
     if (author && topic) {
         getGoogleBooksInfo(author, topic)
     } else {
-        alert('Please enter data')
+        // Why when clicking again it does not work?
+        enterDataEl.style.display = 'block';
     }
 }
 
@@ -83,3 +85,13 @@ var displayBooksCards = function(books) {
 }
 
 searchBtn.addEventListener('click', handleFormSubmit);
+
+document.addEventListener('DOMContentLoaded', () => {
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      const $notification = $delete.parentNode;
+  
+      $delete.addEventListener('click', () => {
+        $notification.parentNode.removeChild($notification);
+      });
+    });
+  });
