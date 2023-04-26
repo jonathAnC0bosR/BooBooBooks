@@ -51,7 +51,6 @@ var getGoogleBooksInfo = function(author, topic) {
 var displayBooksCards = function(books) {
     
     if (books.totalItems === 0) {
-        alert('Sorry, no books availabe');
         availableEl.style.display = 'block';
         return;
     }
@@ -89,8 +88,6 @@ var displayBooksCards = function(books) {
     }
     
 
-
-    
 }
 
 searchBtn.addEventListener('click', handleFormSubmit);
@@ -99,3 +96,14 @@ enterDataEl.addEventListener('click', function() {
     enterDataEl.style.display = 'none';
 })
 
+connectEl.addEventListener('click', function() {
+    connectEl.style.display = 'none';
+})
+
+errorEl.addEventListener('click', function() {
+    errorEl.style.display = 'none';
+})
+
+availableEl.addEventListener('click', function() {
+    availableEl.style.display = 'none';
+})
