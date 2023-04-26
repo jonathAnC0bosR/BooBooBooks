@@ -51,12 +51,19 @@ h1 {
 
 .results h2 {
 	color: #333;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 }
 
 .google-books,
 .internet-archive {
 	margin-bottom: 20px;
+	text-align: center;
+}
+
+img {
+	width: 128px;
+	height: 197px;
+	margin: 20pX;;
 }
 
 .book {
