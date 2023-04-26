@@ -3,9 +3,9 @@ body {
 	font-family: Arial, sans-serif;
 }
 
-.container {
-	margin: 0 auto;
-	max-width: 800px;
+#input-form {
+	width:  700px;
+	
 }
 
 h1 {
@@ -77,6 +77,19 @@ h1 {
 
 .book p {
 	margin: 0;
+}
+
+.alert {
+	position: relative;
+}
+
+#enter-data, #error, 
+#connect, #available {
+	z-index: 1;
+	position: absolute;
+ 	top: 50px;
+ 	left: 50%;
+  	transform: translate(-50%, -50%);
 }
 
 .book .button {

@@ -2,17 +2,20 @@
 <html>
 <head>
 	<title>Book Search</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	
 </head>
 <body>
-	<div class="container">
+	<div class="container is-fluid column" id="input-form">
 		<h1>Book Search</h1>
 		<div class="form">
 			<label for="topic">Topic:</label>
-			<input type="text" id="topic">
+			<input class='input is-link' type="text" id="topic">
 			<label for="author">Author:</label>
-			<input type="text" id="author">
-			<button id="search">Search</button>
+			<input class="input is-link " type="text" id="author">
+			<button class="button is-dark is-responsive" id="search">Search</button>
 		</div>
 		<div class="results">
 			<h2>Results</h2>
@@ -22,8 +25,32 @@
 		<div class="book-cards">
 			
 		</div>
-	</div>
-    <script src="./assets/js/script.js"></script>
+
+		<div class="alerts">
+			<div class= "notification is-warning" id="enter-data" style="display: none;">
+				<button class="delete"></button>
+				<strong>Please enter data</strong>
+			</div>
+			<div class= "notification is-warning" id="error" style="display:none;">
+				<button class="delete"></button>
+				<strong>Error</strong>
+			</div>
+			<div class= "notification is-danger" id="connect" style="display:none">
+				<button class="delete"></button>
+				<strong>Unable to connect to Google Books</strong>
+			</div>
+			<div class= "notification is-danger" id="available" style="display:none">
+				<button class="delete"></button>
+				<strong>Sorry, no books available </strong>
+			</div>
+
+
+		</div>
+	
+
+	
+	
+    <script src="./assets/js/script.js"></script> 
 	<script src="./assets/js/openlib.js"></script>
 </body>
 
