@@ -1,6 +1,7 @@
 // DOM ELEMENTS
 
 let submitBtn = document.getElementById('search');
+let cardHolder = document.querySelector('.internet-archive');
 
 let subject;
 let author;
@@ -15,6 +16,7 @@ function selectTopic(){
 
 function searchBook(){
     var requestUrl = 'https://openlibrary.org/search.json?author='+author+'&subject:='+subject;
+    cardHolder.textContent = '';
 fetch(requestUrl)
     .then(function(response){
         return response.json();
@@ -23,18 +25,17 @@ fetch(requestUrl)
         console.log('Data From Open Library');
         console.log(data)
         createCards(data)
-         
     });
 }
 
-   //CREATE A CARD ELEMENT THAT IS A LINK FOR NOW A DIV, CREATE TITLE, CREATE TUMBNAIL
+   //CREATE A CARD ELEMENT
 function createCards(data){
     let count = 0;
         for(let i = 0; i<data.docs.length; i++){
                 if(data.docs[i].ebook_access == "borrowable" && data.docs[i].has_fulltext == true){
-                    console.log('https://openlibrary.org/'+data.docs[i].key);
-                    let cardHolder = document.querySelector('.internet-archive');
-                    let bookCardEl = document.createElement('div');
+                    let bookCardEl = document.createElement('a');
+                    let bookLink = 'https://openlibrary.org/'+data.docs[i].key;
+                    bookCardEl.setAttribute('href', bookLink)
                     let bookTitleEl = document.createElement('h2');
                     let bookTitle = data.docs[i].title;
                     bookTitleEl.textContent = bookTitle;
@@ -59,6 +60,8 @@ function createCards(data){
                 }
             }
 }
+
+
 
 submitBtn.addEventListener('click',selectTopic);
 
