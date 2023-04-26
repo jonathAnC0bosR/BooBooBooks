@@ -61,7 +61,7 @@ function createCards(data){
                     let bookTitleEl = document.createElement('h2');
                     let bookTitle = data.docs[i].title;
                     bookTitleEl.textContent = bookTitle;
-                    let imageLink = 'https://covers.openlibrary.org/b/id/'+data.docs[i].cover_i+'-S.jpg';
+                    let imageLink = 'https://covers.openlibrary.org/b/id/'+data.docs[i].cover_i+'-M.jpg';
                     let imageEl = document.createElement('img');
 
                     cardHolder.appendChild(bookCardEl);
