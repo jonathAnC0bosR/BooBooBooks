@@ -5,6 +5,9 @@ var authorInputEl = document.querySelector('#author');
 var searchBtn = document.querySelector('#search');
 var booksCards = document.querySelector('.book-cards');
 var enterDataEl = document.querySelector('#enter-data');
+var errorEl = document.querySelector('#error');
+var connectEl = document.querySelector('#connect');
+var availableEl = document.querySelector('#available');
 
 
 // GLOBAL VAR 
@@ -19,7 +22,6 @@ var handleFormSubmit = function(event) {
     if (author && topic) {
         getGoogleBooksInfo(author, topic)
     } else {
-        // Why when clicking again it does not work?
         enterDataEl.style.display = 'block';
     }
 }
@@ -36,10 +38,12 @@ var getGoogleBooksInfo = function(author, topic) {
                     displayBooksCards(data);
                 })
             } else {
-                alert('Error: ' + response.statusText);
+                errorEl.style.display = 'block';
+                return;
             }
         }).catch(function(error) {
-            alert('Unable to connect to Google Books API')
+            connectEl.style.display = 'block';
+            return;
         })
     
 }
@@ -48,29 +52,34 @@ var displayBooksCards = function(books) {
     
     if (books.totalItems === 0) {
         alert('Sorry, no books availabe');
+        availableEl.style.display = 'block';
         return;
     }
 
     let count = 0;
     for(var i = 0; i < books.items.length; i++) {
-        var bookCardEl = document.createElement('div');
+        var bookCardEl = document.createElement('a');
         var bookTitle = books.items[i].volumeInfo.title;
         var bookTitleEl = document.createElement('h1');
         var bookImageLink = books.items[i].volumeInfo.imageLinks
         var bookThumbnail = document.createElement('img');
+        var bookLink = books.items[i].volumeInfo.infoLink;
+        bookCardEl.setAttribute('href', bookLink);
         bookTitleEl.textContent = bookTitle;
         bookCardEl.appendChild(bookTitleEl);
+        
         
         if(bookImageLink) {
             bookThumbnail.setAttribute('src', bookImageLink.smallThumbnail);
             bookCardEl.appendChild(bookThumbnail);
         } else {
-            console.log('No image you silly')
             bookThumbnail.setAttribute('src', './assets/images/No_Image_Available.jpg');
             bookCardEl.appendChild(bookThumbnail);
         }
         
+
         booksCards.appendChild(bookCardEl);
+
         
         console.log(bookTitle);
         count ++;
@@ -86,12 +95,7 @@ var displayBooksCards = function(books) {
 
 searchBtn.addEventListener('click', handleFormSubmit);
 
-document.addEventListener('DOMContentLoaded', () => {
-    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-      const $notification = $delete.parentNode;
-  
-      $delete.addEventListener('click', () => {
-        $notification.parentNode.removeChild($notification);
-      });
-    });
-  });
+enterDataEl.addEventListener('click', function() {
+    enterDataEl.style.display = 'none';
+})
+
