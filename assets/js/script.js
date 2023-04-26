@@ -8,7 +8,7 @@ var enterDataEl = document.querySelector('#enter-data');
 var errorEl = document.querySelector('#error');
 var connectEl = document.querySelector('#connect');
 var availableEl = document.querySelector('#available');
-
+let loader = document.getElementById('loader');
 
 // GLOBAL VAR 
 
@@ -17,6 +17,7 @@ var googleApiKey = 'AIzaSyBnclLTbT1mhObu7gIM7GD2zyWPGJMmCdA';
 var handleFormSubmit = function(event) {
     event.preventDefault();
     booksCards.textContent = '';
+
     var author = authorInputEl.value.trim();
     var topic = topicInputEl.value.trim();
     if (author && topic) {

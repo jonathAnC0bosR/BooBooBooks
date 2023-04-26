@@ -2,11 +2,13 @@
 
 let submitBtn = document.getElementById('search');
 let cardHolder = document.querySelector('.internet-archive');
+let loaderEl = document.getElementById('loader');
 
 let subject;
 let author;
 function selectTopic(event){
     event.preventDefault();
+    loaderEl.style.display = 'block';
     cardHolder.textContent = '';
     subject = document.getElementById('topic').value;
     author = document.getElementById('author').value;
@@ -25,6 +27,7 @@ fetch(requestUrl)
         if(response.ok){
             response.json()
             .then(function(data){
+                //TODO: AÑADIR UN LOADER
                 console.log('Data From Open Library');
                 console.log(data)
                 createCards(data)
