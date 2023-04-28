@@ -9,6 +9,8 @@ var errorEl = document.querySelector('#error');
 var connectEl = document.querySelector('#connect');
 var availableEl = document.querySelector('#available');
 var googleBooksTitle = document.querySelector('.google-books');
+var histoyBtn = document.querySelector('#history');
+var resultsEl = document.querySelector('.results');
 
 
 // GLOBAL VAR  
@@ -21,7 +23,8 @@ var handleFormSubmit = function(event) {
     var author = authorInputEl.value.trim();
     var topic = topicInputEl.value.trim();
     if (author && topic) {
-        getGoogleBooksInfo(author, topic)
+        resultsEl.style.display = 'block';
+        getGoogleBooksInfo(author, topic);
     } else {
         enterDataEl.style.display = 'block';
         console.log('no data')

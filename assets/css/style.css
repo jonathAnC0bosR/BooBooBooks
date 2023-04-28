@@ -1,11 +1,22 @@
 body {
-	background-color: #f2f2f2;
+	background-color: #fff;
 	font-family: Arial, sans-serif;
+	height:max-content
 }
 
 #input-form {
-	text-align: center;
-	width: 800px;
+	width: 100%
+}
+
+div.logo {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+div.buttons {
+	display: flex;
+	justify-content: center;
 }
 
 h1 {
@@ -53,10 +64,9 @@ h1 {
 .results h2 {
 	color: #333;
 	margin-top: 15px;
-	/* margin-bottom: 20px; */
 }
 
-.results-title {
+h2.subtitle {
 	text-align: center;
 }
 
@@ -65,31 +75,19 @@ h1 {
 	margin-bottom: 20px;
 	text-align: center;
 }
+div.results {
+	text-align: center;
+	margin-top: 30px;
+}
+
+div.results-title h3 {
+	font-size: 140%;
+}
 
 img {
-	width: 128px;
+	width: 127px;
 	height: 197px;
-	margin: 20pX;;
-}
-
-.book {
-	display: flex;
-	flex-wrap: wrap;
-	border: 1px solid #ccc;
-	padding: 11px;
-}
-
-.book img {
-	max-width: 100px;
-	margin-right: 20px;
-}
-
-.book h3 {
-	margin-top: 0;
-}
-
-.book p {
-	margin: 0;
+	margin-top: 20px;
 }
 
 .alert {
@@ -100,42 +98,25 @@ img {
 #connect, #available {
 	z-index: 1;
 	position: absolute;
- 	top: 300px;
+ 	top: 100px;
  	left: 50%;
   	transform: translate(-50%, -50%);
 }
 
-.google-books h1 {
+.google-books h1, 
+.internet-archive h1 {
 	font-weight: 600;
 	margin-top: 15px;
 	font-size: 120%;
 	
 }
-
-.internet-archive h1{
-	font-weight: 600;
-	margin-top: 15px;
-	font-size: 120%;
-}
-
-.google-books div {
-	background-color: #ffff;
+.google-books div, 
+.internet-archive div {
+	background-color: #fff;
 	border-radius: 10px;
 	margin: 40px;
 	box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-	padding: 10px;
-}
-
-.internet-archive div{
-	background-color: #ffff;
-	border-radius: 10px;
-	margin: 40px;
-	box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-	padding: 10px;
-}
-
-.card {
-	background-color: gray;
+	padding: 15px;
 }
 
 .book .button {
@@ -146,11 +127,3 @@ img {
 	cursor: pointer;
 	margin-top: 10px;
 }
-.image {
-	display: block;
-	position: relative;
-  }
-
-  div.z-index {
-	z-index: 0;
-  }
