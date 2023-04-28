@@ -2,6 +2,7 @@
 
 let submitBtn = document.getElementById('search');
 let cardHolder = document.querySelector('.internet-archive');
+let loader = document.getElementById('loader');
 
 let subject;
 let author;
@@ -48,20 +49,26 @@ function createCards(data){
         return;
     }
 
+    var freeBookTitle = document.createElement('h1');
+                    freeBookTitle.textContent = "Free Borrowable Books";
+                    cardHolder.appendChild(freeBookTitle);
+
     let count = 0;
         for(let i = 0; i<data.docs.length; i++){
                 if(data.docs[i].ebook_access == "borrowable" && data.docs[i].has_fulltext == true){
+                    let bookDiv = document.createElement('div');
                     let bookCardEl = document.createElement('a');
                     let bookLink = 'https://openlibrary.org/'+data.docs[i].key;
-                    bookCardEl.setAttribute('href', bookLink)
-                    bookCardEl.setAttribute('target', '_blank')
+                    bookCardEl.setAttribute('href', bookLink);
+                    bookCardEl.setAttribute('target', '_blank');
                     let bookTitleEl = document.createElement('h2');
                     let bookTitle = data.docs[i].title;
                     bookTitleEl.textContent = bookTitle;
-                    let imageLink = 'https://covers.openlibrary.org/b/id/'+data.docs[i].cover_i+'-S.jpg';
+                    let imageLink = 'https://covers.openlibrary.org/b/id/'+data.docs[i].cover_i+'-M.jpg';
                     let imageEl = document.createElement('img');
 
-                    cardHolder.appendChild(bookCardEl);
+                    cardHolder.appendChild(bookDiv);
+                    bookDiv.appendChild(bookCardEl);
                     bookCardEl.appendChild(bookTitleEl);
 
                     if (imageLink) {
@@ -71,6 +78,8 @@ function createCards(data){
                         imageEl.setAttribute('src', './assets/images/No_Image_Available.jpg');
                         bookCardEl.appendChild(imageEl); 
                     }
+
+
 
                     count++;
                     if(count == 5){
