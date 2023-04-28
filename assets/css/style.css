@@ -112,6 +112,12 @@ img {
 	
 }
 
+.internet-archive h1{
+	font-weight: 600;
+	margin-top: 15px;
+	font-size: 120%;
+}
+
 .google-books div {
 	background-color: #ffff;
 	border-radius: 10px;
@@ -120,6 +126,13 @@ img {
 	padding: 10px;
 }
 
+.internet-archive div{
+	background-color: #ffff;
+	border-radius: 10px;
+	margin: 40px;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+	padding: 10px;
+}
 
 .card {
 	background-color: gray;
