@@ -107,3 +107,7 @@ img {
 	cursor: pointer;
 	margin-top: 10px;
 }
+.image {
+	display: block;
+	position: relative;
+  }
