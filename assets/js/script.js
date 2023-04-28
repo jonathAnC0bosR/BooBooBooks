@@ -8,9 +8,10 @@ var enterDataEl = document.querySelector('#enter-data');
 var errorEl = document.querySelector('#error');
 var connectEl = document.querySelector('#connect');
 var availableEl = document.querySelector('#available');
+var googleBooksTitle = document.querySelector('.google-books');
 
 
-// GLOBAL VAR 
+// GLOBAL VAR  
 
 var googleApiKey = 'AIzaSyBnclLTbT1mhObu7gIM7GD2zyWPGJMmCdA';
 
@@ -23,6 +24,7 @@ var handleFormSubmit = function(event) {
         getGoogleBooksInfo(author, topic)
     } else {
         enterDataEl.style.display = 'block';
+        console.log('no data')
     }
 }
 
@@ -55,18 +57,26 @@ var displayBooksCards = function(books) {
         return;
     }
 
+    var googleTitle = document.createElement('h1');
+    googleTitle.textContent = 'Link to buy ';
+    googleBooksTitle.append(googleTitle);
+    
+   
+
     let count = 0;
     for(var i = 0; i < books.items.length; i++) {
+        var bookDiv = document.createElement('div');
         var bookCardEl = document.createElement('a');
+        bookCardEl.setAttribute('target', '_blank');
         var bookTitle = books.items[i].volumeInfo.title;
-        var bookTitleEl = document.createElement('h1');
+        var bookTitleEl = document.createElement('h2');
         var bookImageLink = books.items[i].volumeInfo.imageLinks
         var bookThumbnail = document.createElement('img');
         var bookLink = books.items[i].volumeInfo.infoLink;
         bookCardEl.setAttribute('href', bookLink);
         bookTitleEl.textContent = bookTitle;
         bookCardEl.appendChild(bookTitleEl);
-        
+        bookCardEl.classList.add('.card');
         
         if(bookImageLink) {
             bookThumbnail.setAttribute('src', bookImageLink.smallThumbnail);
@@ -76,8 +86,8 @@ var displayBooksCards = function(books) {
             bookCardEl.appendChild(bookThumbnail);
         }
         
-
-        booksCards.appendChild(bookCardEl);
+        bookDiv.appendChild(bookCardEl);
+        booksCards.appendChild(bookDiv);
 
         
         console.log(bookTitle);
