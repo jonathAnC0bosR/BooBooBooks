@@ -9,36 +9,35 @@
 
 
 <body>
-	<nav class="navbar" role="navigation" aria-label="main navigation">
-		<div class="navbar-brand">
-		  <!-- navbar items, navbar burger... -->
-		  <figure class="image is-128x128">
-			<img src='./assets/images/BooBooBook2.png'alt="BooBooBook Logo, a web application to find books for free or to buy" width="112" height="28">
-		  </figure>
-		 
-		</div>
-		<div class="container is-fluid column" id="input-form">
-			<section class="section">
-				<center>
-				<h1 class="title">Find a book for free or to buy</h1>
-				<h2 class="subtitle">
-				  Please add a topic and the author <strong>and enjoy the reading!!!</strong>, 
-				</h2></center>
-				<br>
-			<div class="form">
-				<label for="topic">Topic:</label>
-				<input class='input is-link' type="text" id="topic">
-				<label for="author">Author:</label>
-				<input class="input is-link " type="text" id="author">
-				<button class="button is-dark is-responsive" id="search">Search</button>
-			</div>
-			<div class="results columns">
-				<h3><strong>Results</strong></h3>
-				<div class="google-books column "></div>
-				<div class="internet-archive column"></div>
-			</div>
-	  </nav>
-		
+	<div class="container ">
+			<div class="container is-fluid " id="input-form">
+				<div class="logo">
+					<img src='./assets/images/BooBooBook2.png'alt="BooBooBook Logo, a web application to find books for free or to buy" width="112" height="28">
+				</div>
+				<section class="section">
+					<h1 class="title">Find a book for free or to buy</h1>
+					<h2 class="subtitle">
+					  Please add a topic and the author <strong>and enjoy the reading!!!</strong>
+					</h2>
+					<br>
+				<div class="form">
+					<label for="topic">Topic:</label>
+					<input class='input is-link' type="text" id="topic">
+					<label for="author">Author:</label>
+					<input class="input is-link " type="text" id="author">
+					<button class="button is-dark is-responsive" id="search">Search</button>
+				</div>
+				<div class="results ">
+					<div class="results-title">
+						<h3><strong>Results</strong></h3>
+					</div>
+					<div class="columns">
+						<div class="google-books column "></div>
+					<div class="internet-archive column"></div>	
+					</div>
+				</div>
+		  	
+	</div>
 
 		<div class="alerts">
 			<div class= "notification is-warning" id="enter-data" style="display: none;">
@@ -57,8 +56,6 @@
 				<button class="delete"></button>
 				<strong>Sorry, no books available from certain library </strong>
 			</div>
-
-
 		</div>
 	
     <script src="./assets/js/script.js"></script> 
