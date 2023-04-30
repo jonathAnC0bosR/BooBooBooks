@@ -9,23 +9,26 @@
 
 
 <body>
-	<div class="container ">
+	<div class="container is-max-desktop">
 			<div class="container is-fluid " id="input-form">
 				<div class="logo">
 					<img src='./assets/images/BooBooBook2.png'alt="BooBooBook Logo, a web application to find books for free or to buy" width="112" height="28">
 				</div>
-				<section class="section">
+				<section class="">
 					<h1 class="title">Find a book for free or to buy</h1>
 					<h2 class="subtitle">
 					  Please add a topic and the author <strong>and enjoy the reading!!!</strong>
 					</h2>
 					<br>
-				<div class="form">
+				<div class="form container is-max-desktop">
 					<label for="topic">Topic:</label>
 					<input class='input is-link' type="text" id="topic">
 					<label for="author">Author:</label>
 					<input class="input is-link " type="text" id="author">
-					<button class="button is-dark is-responsive" id="search">Search</button>
+					<div class="buttons">
+						<button class="button is-dark " id="search">Search</button>
+						<button class="button is-dark "id='history'>Last search</button>
+					</div>
 				</div>
 				<div class="results ">
 					<div class="results-title">
