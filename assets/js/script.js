@@ -9,6 +9,7 @@ var errorEl = document.querySelector('#error');
 var connectEl = document.querySelector('#connect');
 var availableEl = document.querySelector('#available');
 var googleBooksTitle = document.querySelector('.google-books');
+let lastSrch = document.getElementById('history');
 
 
 // GLOBAL VAR  
@@ -19,13 +20,21 @@ var handleFormSubmit = function(event) {
     event.preventDefault();
     booksCards.textContent = '';
     var author = authorInputEl.value.trim();
+    localStorage.setItem("authorHistory", author);
     var topic = topicInputEl.value.trim();
+    localStorage.setItem("topicHistory", topic);
     if (author && topic) {
         getGoogleBooksInfo(author, topic)
     } else {
         enterDataEl.style.display = 'block';
         console.log('no data')
     }
+}
+
+function lastSearch(){
+    topic = localStorage.getItem("topicHistory");
+    author = localStorage.getItem("authorHistory");
+    getGoogleBooksInfo(author, topic);
 }
 
 var getGoogleBooksInfo = function(author, topic) {
@@ -101,6 +110,7 @@ var displayBooksCards = function(books) {
 }
 
 searchBtn.addEventListener('click', handleFormSubmit);
+lastSrch.addEventListener('click', lastSearch);
 
 enterDataEl.addEventListener('click', function() {
     enterDataEl.style.display = 'none';
