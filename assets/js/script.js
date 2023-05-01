@@ -21,7 +21,9 @@ var handleFormSubmit = function(event) {
     event.preventDefault();
     booksCards.textContent = '';
     var author = authorInputEl.value.trim();
+    localStorage.setItem("lastAuthor", author);
     var topic = topicInputEl.value.trim();
+    localStorage.setItem("lastTopic", topic);
     if (author && topic) {
         resultsEl.style.display = 'block';
         getGoogleBooksInfo(author, topic);
@@ -30,6 +32,14 @@ var handleFormSubmit = function(event) {
         console.log('no data')
     }
 }
+
+//Search history function
+function lastSearch(){
+    author = localStorage.getItem('lastAuthor');
+    topic = localStorage.getItem('lastTopic');
+    getGoogleBooksInfo(author, topic);
+}
+
 
 var getGoogleBooksInfo = function(author, topic) {
     
@@ -104,6 +114,7 @@ var displayBooksCards = function(books) {
 }
 
 searchBtn.addEventListener('click', handleFormSubmit);
+histoyBtn.addEventListener('click', lastSearch);
 
 enterDataEl.addEventListener('click', function() {
     enterDataEl.style.display = 'none';

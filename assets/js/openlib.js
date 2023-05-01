@@ -4,23 +4,32 @@ let submitBtn = document.getElementById('search');
 let cardHolder = document.querySelector('.internet-archive');
 let loader = document.getElementById('loader');
 
-let subject;
+let topic;
 let author;
 function selectTopic(event){
     event.preventDefault();
     cardHolder.textContent = '';
-    subject = document.getElementById('topic').value;
+    topic = document.getElementById('topic').value;
+    localStorage.setItem("lastTopic", topic);
     author = document.getElementById('author').value;
-    if(author && subject){
-        searchBook(author, subject);
+    localStorage.setItem("lastAuthor", author);
+    if(author && topic){
+        searchBook(author, topic);
     }else{
         enterDataEl.style.display = 'block';
     }
     
 }
 
-function searchBook(author, subject){
-    var requestUrl = 'https://openlibrary.org/search.json?author='+author+'&subject:='+subject;
+//Search history function
+function lastSearch(){
+    author = localStorage.getItem('lastAuthor');
+    topic = localStorage.getItem('lastTopic');
+    searchBook(author, topic);
+}
+
+function searchBook(author, topic){
+    var requestUrl = 'https://openlibrary.org/search.json?author='+author+'&subject:='+topic;
 fetch(requestUrl)
     .then(function(response){
         if(response.ok){
@@ -92,7 +101,7 @@ function createCards(data){
 
 
 submitBtn.addEventListener('click',selectTopic);
-
+histoyBtn.addEventListener('click', lastSearch);
 
 enterDataEl.addEventListener('click', function() {
     enterDataEl.style.display = 'none';
