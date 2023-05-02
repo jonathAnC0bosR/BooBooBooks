@@ -23,6 +23,7 @@ function selectTopic(event){
 
 //Search history function
 function lastSearch(){
+    cardHolder.textContent = '';
     author = localStorage.getItem('lastAuthor');
     topic = localStorage.getItem('lastTopic');
     searchBook(author, topic);

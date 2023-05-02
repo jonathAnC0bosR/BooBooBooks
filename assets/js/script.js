@@ -35,6 +35,7 @@ var handleFormSubmit = function(event) {
 
 //Search history function
 function lastSearch(){
+    booksCards.textContent = '';
     author = localStorage.getItem('lastAuthor');
     topic = localStorage.getItem('lastTopic');
     getGoogleBooksInfo(author, topic);
