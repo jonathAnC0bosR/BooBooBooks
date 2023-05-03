@@ -36,8 +36,6 @@ fetch(requestUrl)
         if(response.ok){
             response.json()
             .then(function(data){
-                console.log('Data From Open Library');
-                console.log(data)
                 createCards(data)
             })
         }else{
