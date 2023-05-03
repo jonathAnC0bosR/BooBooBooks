@@ -87,8 +87,6 @@ function createCards(data){
                         bookCardEl.appendChild(imageEl); 
                     }
 
-
-
                     count++;
                     if(count == 5){
                         break;
