@@ -50,7 +50,6 @@ var getGoogleBooksInfo = function(author, topic) {
             if(response.ok) {
                 response.json()
                 .then(function(data){
-                    console.log(data);
                     displayBooksCards(data);
                 })
             } else {
