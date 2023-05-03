@@ -103,7 +103,6 @@ var displayBooksCards = function(books) {
         booksCards.appendChild(bookDiv);
 
         
-        console.log(bookTitle);
         count ++;
         if (count === 5){
             break;
